@@ -6,6 +6,7 @@ import Home from "./Components/Home";
 import Preview from "./Components/Preview";
 import Login from "./Components/Login";
 import Question from "./Components/Question";
+import Auth from "./Components/Auth";
 import * as action from "./actions"
 import {connect} from "react-redux";
 import {BrowserRouter,Route} from "react-router-dom";
@@ -71,10 +72,10 @@ return (
     <div className="App">
    
      <BrowserRouter>
-     <Route path="/" render={props=><Header user={users[0]}/>}/>
-     <Route  exact path="/"  render={(props)=><Home questions={questions} toggle={this.view} view={this.state.view}/>}/>
+     <Route  render={props=><Header user={users[0]}/>}/>
+     <Route  exact path="/"  render={(props)=>this.props.current?<Home questions={questions} toggle={this.view} view={this.state.view}/>:<Login users={users}/>}/>
      <Route  exact path="/login" render={(props)=><Login users={users}/>}/>
-     <Route   path="/questions/:question_id" render={(props)=><Question/>}/>
+     <Route   path="/questions/:question_id" render={(props)=>this.props.current?<Question/>:<Login users={users}/>}/>
      </BrowserRouter>
     </div>
   ); 

@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 
 
+
 const Div=style.div`
   background-color:darkgrey;
   position:relative;
@@ -58,6 +59,8 @@ const Div=style.div`
 
 `
 const Header = (props)=>{
+
+
 let users=props.current;
 let image=users?users.avatarURL:null;
 let name= users?users.name:"no-name";

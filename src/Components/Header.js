@@ -71,8 +71,8 @@ let name= users?users.name:"no-name";
               <Link to="/"><li>Home</li></Link>
               <Link to="/add"><li>Add Question</li></Link>
               <Link to="/board"><li>Board</li></Link>
-              <Link to="/login"><li>Change Player</li></Link>
-              <Link to="/"><li>Logout</li></Link>
+              <Link to="/login"><li>Login</li></Link>
+              <Link to="/logout"><li>Logout</li></Link>
           </ul>
              <div className="menu-con">
               <span>Menu</span>

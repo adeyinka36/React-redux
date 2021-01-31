@@ -7,7 +7,7 @@ export const SAVE_ANSWER="SAVE_ANSWER";
 export const INITIAL="INITIAL";
 export const LOGIN="LOGIN";
 export const VIEW="VIEW";
-
+export const LOGOUT="LOGOUT";
 // change logged in user
 export function changeUser(object){
     return {
@@ -29,7 +29,7 @@ export function view(){
 
 
 export function saveQuestion(object){
-    console.log("hello")
+    
     return (dispatch)=>{API._saveQuestion(object)
         .then((list)=>{
             console.log("saved ques---",list)
@@ -77,6 +77,8 @@ export function loadState(list){
 
 }
 
+
+
 export function initialData(){
     return (dispatch)=>{ Promise.all(
         [API._getUsers(),API._getQuestions()])
@@ -84,4 +86,20 @@ export function initialData(){
     }
 }
 
+
+export function logoutUser(list){
+    
+    return{
+        type:LOGOUT,
+        payload:list
+    }
+
+}
+
+export function logout(){
+    return (dispatch)=>{ Promise.all(
+        [API._getUsers(),API._getQuestions()])
+        .then(([users,questions])=>logoutUser(loadState([users,questions])))
+    }
+}
 

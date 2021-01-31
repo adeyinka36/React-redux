@@ -1,7 +1,7 @@
 import style from "styled-components";
 import {connect} from "react-redux";
 import * as actions from "../actions"
-import {useParams,useHistory} from "react-router-dom"
+import {useParams,useHistory,Redirect} from "react-router-dom";
 
 const Con= style.div`
      text-align:center;
@@ -45,7 +45,7 @@ const slug= useParams();
 
 let questionId,question;
 
-// console.log(props.current.answers)
+
  questionId=slug.question_id;
  question=props.questions[questionId]
 
@@ -79,8 +79,10 @@ const submit= async ()=>{
    
 
 }
-
+if(question){
+    console.log(questionId)
     return(
+
       <Con>
           <h2>Would You Rather:</h2>
           <p  id="optionOne"  onClick={(e)=>selection(e)}>{question.optionOne.text}</p>
@@ -88,6 +90,14 @@ const submit= async ()=>{
           <button onClick={submit} >Submit</button>
       </Con>
     )
+}
+else{
+    
+    return(
+    
+        <Redirect to="/error"/>
+    )
+}
 }
 
 

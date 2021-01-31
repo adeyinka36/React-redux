@@ -11,13 +11,17 @@ export default function data(state={},action){
                 ...state,
                 users:action.payload[0],
                 questions:action.payload[1]
-                
+            }
+        case ACT.LOGOUT:
+            return{
+                users:action.payload[0],
+                questions:action.payload[1],
+                current:null
             }
         case ACT.LOGIN:
+            
             return {...state,current:action.payload}
 
-        case ACT.VIEW:
-            return{...state}
         default:
             return state
     }

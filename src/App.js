@@ -6,10 +6,13 @@ import Home from "./Components/Home";
 import Preview from "./Components/Preview";
 import Add from "./Components/Add";
 import Login from "./Components/Login";
+import Logout from "./Components/Logout";
 import Question from "./Components/Question";
+import Error from "./Components/Error";
+
 import * as action from "./actions"
 import {connect} from "react-redux";
-import {BrowserRouter,Route} from "react-router-dom";
+import {BrowserRouter,Route,Switch} from "react-router-dom";
 
 
 
@@ -68,11 +71,15 @@ return (
     <div className="App">
    
      <BrowserRouter>
-     <Route  render={props=><Header user={users[0]}/>}/>
-     <Route  exact path="/"  render={(props)=>this.props.current?<Home questions={questions} toggle={this.view} view={this.state.view}/>:<Login users={users}/>}/>
-     <Route  exact path="/login" render={(props)=><Login users={users}/>}/>
+     <Route   render={props=><Header user={users[0]}/>}/>
+     <Switch>
+     <Route   exact path="/"  render={(props)=>this.props.current?<Home questions={questions} toggle={this.view} view={this.state.view}/>:<Login users={users}/>}/>
+     <Route   exact path="/login" render={(props)=><Login users={users}/>}/>
      <Route   path="/questions/:question_id" render={(props)=>this.props.current?<Question/>:<Login users={users}/>}/>
-     <Route  exact path="/add"  render={(props)=>this.props.current?<Add/>:<Login users={users}/>}/>
+     <Route   exact path="/add"  render={(props)=>this.props.current?<Add/>:<Login users={users}/>}/>
+     <Route   exact path="/logout" component={Logout}/>
+     <Route   component={Error}/>
+     </Switch>
      </BrowserRouter>
     </div>
   ); 

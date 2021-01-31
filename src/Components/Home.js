@@ -29,6 +29,7 @@ import style from "styled-components";
  `
 
 const Home= (props)=>{
+    console.log(props.questions)
  let ans,unans;
   let view=props.view?props.view:null;
   if(view==="answered"){
@@ -37,7 +38,7 @@ const Home= (props)=>{
   else if(view==="unanswered"){
       unans=view
   }
-
+if(props.current){
     return(
         <>
       <Con>
@@ -50,6 +51,17 @@ const Home= (props)=>{
       {props.questions}
       </>
     )
+}
+else{
+    return(
+        <>
+        <Con></Con>
+      {props.questions}
+      </>
+    )
+}
+    
+
 }
 
 

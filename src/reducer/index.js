@@ -15,8 +15,8 @@ export default function data(state={},action){
         case ACT.LOGOUT:
             return{
                 users:action.payload[0],
-                questions:action.payload[1],
-                current:null
+                questions:action.payload[1]
+            
             }
         case ACT.LOGIN:
             

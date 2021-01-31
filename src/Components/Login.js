@@ -27,7 +27,7 @@ const Login = props=>{
   let slug=useParams();
   let questionId=slug.question_id;
   let history= useHistory()
-  console.log(history)
+  console.log(history.location.pathname)
   let  users=Object.values(props.users);
   let i=[...users]
     const changePlayer=event=>{
@@ -41,10 +41,17 @@ const Login = props=>{
      
     history.push(`/questions/${questionId}`)
     }
-    else{
-    
-      history.push("/error")
+    else if(history.location.pathname==="/login"){
+      history.push("/");
     }
+    else if(history.location.pathname){
+    
+      history.push(history.location.pathname)
+    }
+    else {
+      history.push("/");
+    }
+    
           
           },0);
     }

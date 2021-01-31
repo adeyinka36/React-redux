@@ -6,7 +6,7 @@ const Logout= props=>{
 
     props.dispatch(action.logout())
 
-
+    console.log(props)
     return(
        <Redirect to="login"/>
     )

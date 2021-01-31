@@ -36,10 +36,11 @@ const Con= style.div`
         span{
             text-transform:capitalize;
             font-size:1.5rem;
-            color:maroon;
+            color:black;
         }
         .poll{
-            color:black;
+            font-size:1.1rem;
+            color:white;
         }
        }
 
@@ -50,6 +51,8 @@ const Preview= (props)=>{
 
 let users=props.users;
 let ques=props.ques;
+
+let totalAnswered=[...ques.optionOne.votes,...ques.optionTwo.votes].length;
 let curUser=users.filter(u=>u.id===ques.author);
  curUser=curUser[0];
 
@@ -64,7 +67,7 @@ let curUser=users.filter(u=>u.id===ques.author);
           <div className="right">
             <span>{ques.optionOne.text}</span>
             <span>{ques.optionTwo.text}</span>
-            <span className="poll">Answered by 10 people</span>
+            <span className="poll">Answered by {totalAnswered}</span>
           </div>
       </Con>
       </Link>

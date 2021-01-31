@@ -97,9 +97,10 @@ export function logoutUser(list){
 }
 
 export function logout(){
+   
     return (dispatch)=>{ Promise.all(
         [API._getUsers(),API._getQuestions()])
-        .then(([users,questions])=>logoutUser(loadState([users,questions])))
+        .then(([users,questions])=>dispatch(logoutUser([users,questions])))
     }
 }
 

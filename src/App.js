@@ -41,6 +41,7 @@ class App extends Component {
    
    if(this.props.questions){
     questions=  Object.values(this.props.questions);
+    questions.sort((a,b)=>b.timestamp-a.timestamp);
    }
    
     if(this.state.view==="answered" && this.props.current && this.props.questions){
@@ -66,6 +67,10 @@ class App extends Component {
    questions=allQues.length?allQues.map(item=> <Preview ques={item} key={item.id} users={users}/>):null;
   
    }
+   let current= this.props.current;
+if(!this.props.current){
+   questions=questions?questions.map(item=> <Preview ques={item} key={item.id} users={users}/>):null;
+}
    
 return (
     <div className="App">
@@ -73,7 +78,7 @@ return (
      <BrowserRouter>
      <Route   render={props=><Header user={users[0]}/>}/>
      <Switch>
-     <Route   exact path="/"  render={(props)=>this.props.current?<Home questions={questions} toggle={this.view} view={this.state.view}/>:<Login users={users}/>}/>
+     <Route   exact path="/"  render={(props)=><Home questions={questions} toggle={this.view} view={this.state.view} current={current}/>}/>
      <Route   exact path="/login" render={(props)=><Login users={users}/>}/>
      <Route   path="/questions/:question_id" render={(props)=>this.props.current?<Question/>:<Login users={users}/>}/>
      <Route   exact path="/add"  render={(props)=>this.props.current?<Add/>:<Login users={users}/>}/>

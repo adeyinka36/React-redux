@@ -3,7 +3,8 @@ import {connect} from "react-redux";
 import * as actions from "../actions"
 import {useParams,useHistory,Redirect} from "react-router-dom";
 
-const Con= style.div`
+const Con= style.div`   
+    
      text-align:center;
      width:70%;
      margin: .1rem auto;
@@ -33,7 +34,13 @@ const Con= style.div`
      .green{
          background-color:green;
      }
-
+     .tally{
+         font-size:1.2rem;
+         color:black;
+     }
+     #optionOne{
+         margin-bottom:2rem
+     }
 `
 
 
@@ -50,8 +57,14 @@ let questionId,question;
  question=props.questions[questionId]
 
 let ans;
-
-
+if( document.getElementById("optionOne")){
+if(question.optionOne.votes.includes(props.current.id)){
+    document.getElementById("optionOne").className="green";
+}
+else if(question.optionTwo.votes.includes(props.current.id)){
+    document.getElementById("optionTwo").className="green";
+}
+}
 
     const selection = (e)=>{
          ans=e.target.id
@@ -80,12 +93,24 @@ const submit= async ()=>{
 
 }
 if(question){
-    console.log(questionId)
+    let total= [...question.optionOne.votes,...question.optionTwo.votes].length;
+    let opt1Total=question.optionOne.votes.length;
+    let opt2Total=question.optionTwo.votes.length;
+    let onepercent=(opt1Total*100)/total;
+    let twopercent=100-onepercent
+    
     return(
 
       <Con>
           <h2>Would You Rather:</h2>
+          <div className="tally">
+              Voted for by {opt2Total} peope which is {onepercent}%
+          </div>
           <p  id="optionOne"  onClick={(e)=>selection(e)}>{question.optionOne.text}</p>
+
+          <div className="tally">
+              Voted for by {opt2Total} peope which is {twopercent}%
+          </div>
           <p  id="optionTwo"  onClick={(e)=>selection(e)}>{question.optionTwo.text}</p>
           <button onClick={submit} >Submit</button>
       </Con>

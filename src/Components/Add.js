@@ -9,11 +9,16 @@ const Con = style.div`
     margin:0 auto;
     margin-top: 2rem;
     flex-direction:column;
+    h1{
+        fonr-size:2.5rem;
+        color:black;
+        margin-bottom:2.5rem;
+    }
     #opt1{
         margin-bottom:1rem;
     }
     label{
-        font-size:2.5rem;
+        font-size:2rem;
         color:black;
     }
     input{
@@ -34,7 +39,7 @@ const Con = style.div`
 const Add = props=>{
      const history=useHistory()
     const addQuestions=(event)=>{
-        console.log("logging")
+        
          let obj={
              "author":props.current.id,
              "optionOneText":document.getElementById("opt1").value,
@@ -53,6 +58,7 @@ const Add = props=>{
 
     return(
         <Con>
+            <h1>Woul You Rather?</h1>
         
             <label >Option One</label>
             <input type="text" id="opt1"></input>

@@ -166,7 +166,7 @@ export function _saveQuestion (question) {
         }
       }
 
-      res(formattedQuestion)
+      res([users,questions])
     }, 1000)
   })
 }
@@ -178,7 +178,7 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
   return new Promise((res, rej) => {
     
     setTimeout(() => {
-      console.log("before---",users)
+      
       users = {
         ...users,
         [authedUser]: {
@@ -202,7 +202,7 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
       }
      
       res([users,questions])
-      console.log("after---",users)
+     
     }, 500)
   })
 }

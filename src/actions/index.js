@@ -29,9 +29,11 @@ export function view(){
 
 
 export function saveQuestion(object){
-    return (dispatch)=>{Promise.all([API._saveQuestion(object),API._getUsers(),API._getQuestions()])
-        .then(([nothing,users,questions])=>{
-            dispatch(loadState([users,questions]))
+    console.log("hello")
+    return (dispatch)=>{API._saveQuestion(object)
+        .then((list)=>{
+            console.log("saved ques---",list)
+            dispatch(loadState(list))
         })
     }
 }
@@ -57,6 +59,8 @@ export function saveAnswer(object){
         })
     }
 }
+
+
 
 
 

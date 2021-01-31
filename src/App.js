@@ -4,9 +4,9 @@ import './App.css';
 import Header from "./Components/Header";
 import Home from "./Components/Home";
 import Preview from "./Components/Preview";
+import Add from "./Components/Add";
 import Login from "./Components/Login";
 import Question from "./Components/Question";
-import Auth from "./Components/Auth";
 import * as action from "./actions"
 import {connect} from "react-redux";
 import {BrowserRouter,Route} from "react-router-dom";
@@ -15,7 +15,7 @@ import {BrowserRouter,Route} from "react-router-dom";
 
 class App extends Component {
   state={
-    view:"all"
+    view:"unanswered"
   }
 
 
@@ -38,10 +38,6 @@ class App extends Component {
    
    if(this.props.questions){
     questions=  Object.values(this.props.questions);
-   }
-   if(this.state.view==="all"){
-     questions=questions?questions.map(item=> <Preview ques={item} key={item.id} users={users}/>):null;
-   
    }
    
     if(this.state.view==="answered" && this.props.current && this.props.questions){
@@ -76,6 +72,7 @@ return (
      <Route  exact path="/"  render={(props)=>this.props.current?<Home questions={questions} toggle={this.view} view={this.state.view}/>:<Login users={users}/>}/>
      <Route  exact path="/login" render={(props)=><Login users={users}/>}/>
      <Route   path="/questions/:question_id" render={(props)=>this.props.current?<Question/>:<Login users={users}/>}/>
+     <Route  exact path="/add"  render={(props)=>this.props.current?<Add/>:<Login users={users}/>}/>
      </BrowserRouter>
     </div>
   ); 

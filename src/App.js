@@ -9,7 +9,7 @@ import Login from "./Components/Login";
 import Logout from "./Components/Logout";
 import Question from "./Components/Question";
 import Error from "./Components/Error";
-
+import Ladder from "./Components/Ladder";
 import * as action from "./actions"
 import {connect} from "react-redux";
 import {BrowserRouter,Route,Switch} from "react-router-dom";
@@ -82,6 +82,7 @@ return (
      <Route   exact path="/login" render={(props)=><Login users={users}/>}/>
      <Route   path="/questions/:question_id" render={(props)=>this.props.current?<Question/>:<Login users={users}/>}/>
      <Route   exact path="/add"  render={(props)=>this.props.current?<Add/>:<Login users={users}/>}/>
+     <Route  exact path="/ladder"  render={(props)=>this.props.current?<Ladder/>:<Login users={users}/>}/>
      <Route   exact path="/logout" component={Logout}/>
      <Route   component={Error}/>
      </Switch>

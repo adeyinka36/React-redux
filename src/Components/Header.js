@@ -70,7 +70,7 @@ let name= users?users.name:"no-name";
           <ul className="menu-items">
               <Link to="/"><li>Home</li></Link>
               <Link to="/add"><li>Add Question</li></Link>
-              <Link to="/board"><li>Board</li></Link>
+              <Link to="/ladder"><li>Board</li></Link>
               <Link to="/login"><li>Login</li></Link>
               <Link to="/logout"><li>Logout</li></Link>
           </ul>

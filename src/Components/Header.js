@@ -72,7 +72,7 @@ let name= users?users.name:"no-name";
               <Link to="/add"><li>Add Question</li></Link>
               <Link to="/leader"><li>Board</li></Link>
               <Link to="/login"><li>Login</li></Link>
-              <Link to="/user">Register</Link>
+              <Link to="/user"><li>Register</li></Link>
               <Link to="/logout"><li>Logout</li></Link>
           </ul>
              <div className="menu-con">

@@ -104,3 +104,12 @@ export function logout(){
     }
 }
 
+// add new user
+export function addUser(user){
+    return (dispatch)=>{ let result=API.saveNewUser(user)
+        let users=result[0];
+        let questions=result[1]
+        dispatch(loadState([users,questions]))
+    }
+}
+

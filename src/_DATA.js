@@ -206,3 +206,15 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
     }, 500)
   })
 }
+
+// save new user
+
+export function  saveNewUser(obj){
+  let name= obj.id
+ 
+  let object={}
+  object[name]=obj
+  console.log(object,"------")
+  users={...users,...object}
+  return([users,questions])
+}

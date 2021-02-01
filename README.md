@@ -1,3 +1,13 @@
+# How to use this app
+-Clone the repo
+-run npm install
+-run npm start from root
+
+
+
+
+
+
 # Would You Rather Project
 
 This is the starter code for the final assessment project for Udacity's React & Redux course.

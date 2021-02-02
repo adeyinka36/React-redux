@@ -214,7 +214,7 @@ export function  saveNewUser(obj){
  
   let object={}
   object[name]=obj
-  console.log(object,"------")
+
   users={...users,...object}
   return([users,questions])
 }

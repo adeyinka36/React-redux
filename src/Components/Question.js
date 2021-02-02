@@ -57,6 +57,7 @@ let questionId,question;
  question=props.questions[questionId]
 
 let ans;
+setTimeout(()=>{
 if( document.getElementById("optionOne")){
 if(question.optionOne.votes.includes(props.current.id)){
     document.getElementById("optionOne").className="green";
@@ -65,7 +66,8 @@ else if(question.optionTwo.votes.includes(props.current.id)){
     document.getElementById("optionTwo").className="green";
 }
 }
-
+},250
+)
     const selection = (e)=>{
          ans=e.target.id
         document.getElementById("optionOne").className="";

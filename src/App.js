@@ -44,11 +44,13 @@ class App extends Component {
     questions=  Object.values(this.props.questions);
     questions.sort((a,b)=>b.timestamp-a.timestamp);
    }
+   console.log(questions)
    
     if(this.state.view==="answered" && this.props.current && this.props.questions){
       let answered=this.props.users[this.props.current.id].answers;
       let  quesId= Object.keys(answered)
       let ansQues=quesId.map(item=>this.props.questions[item])
+      ansQues.sort((a,b)=>b.timestamp-a.timestamp);
      
       questions=ansQues.length?ansQues.map(item=> <Preview ques={item} key={item.id} users={users}/>):null;
      
@@ -56,7 +58,9 @@ class App extends Component {
    else if(this.state.view==="unanswered" && this.props.current && this.props.questions){
     
     let allQues={...this.props.questions}
+    
     let answered=this.props.users[this.props.current.id].answers;
+  
   
     answered=Object.keys(answered)
     answered.forEach( ans=> {
@@ -64,6 +68,7 @@ class App extends Component {
     });
   
    allQues=Object.values(allQues);
+   allQues.sort((a,b)=>b.timestamp-a.timestamp);
    
    questions=allQues.length?allQues.map(item=> <Preview ques={item} key={item.id} users={users}/>):null;
   
@@ -83,7 +88,7 @@ return (
      <Route   exact path="/login" render={(props)=><Login users={users}/>}/>
      <Route   path="/questions/:question_id" render={(props)=>this.props.current?<Question/>:<Login users={users}/>}/>
      <Route   exact path="/add"  render={(props)=>this.props.current?<Add/>:<Login users={users}/>}/>
-     <Route  exact path="/ladder"  render={(props)=>this.props.current?<Leader/>:<Login users={users}/>}/>
+     <Route  exact path="/leaderboard"  render={(props)=>this.props.current?<Leader/>:<Login users={users}/>}/>
      <Route   exact path="/logout" component={Logout}/>
      <Route  exact path="/user" component={User}/>
      <Route   component={Error}/>
